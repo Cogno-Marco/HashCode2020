@@ -9,8 +9,6 @@ public class GoogleBooks {
     private static final String[] outputs = { "output_a.txt", "output_b.txt", "output_c.txt", "output_d.txt",
             "output_e.txt", "output_f.txt" };
 
-    private static List<Book> scannedBooks = new ArrayList<Book>();
-
     private static List<Library> signedUpLibraries = new ArrayList<Library>();
 
     public static void main(String[] args) {
@@ -24,16 +22,6 @@ public class GoogleBooks {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Given the current libraries returns the List with the requested amount of
-     * books.
-     * 
-     * @param amount How many books to choose.
-     *
-     *               private List<Book> chooseBestBooksToShip(int amount) { return
-     *               null; }
-     */
 
     /**
      * @returns Ordered list of choosen libraries that will send the books
@@ -94,6 +82,8 @@ public class GoogleBooks {
     }
 
     /**
+     * Removes books that will be shipped by a library from all the other libraries
+     * 
      * @param libraries     without the removed library
      * @param booksToRemove Books that will actually be removed
      */

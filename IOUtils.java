@@ -1,9 +1,7 @@
 import java.util.*;
-import java.io.BufferedReader;
 import java.io.File; // Import the File class
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException; // Import the IOException class to handle errors
 
 /**
@@ -14,7 +12,8 @@ import java.io.IOException; // Import the IOException class to handle errors
 public class IOUtils {
 
 	public static ProblemData readInputFile(String filename) throws FileNotFoundException, IOException {
-		File file = new File(filename);
+		String fileURL = "sources/" + filename;
+		File file = new File(fileURL);
 		Scanner sc = new Scanner(file);
 		// first line has scan days
 		String[] firstLine = sc.nextLine().split(" ");
@@ -54,13 +53,17 @@ public class IOUtils {
 			currentLibraryName++;
 		}
 
+		sc.close();
+
 		return new ProblemData(libraries, scanningDays);
 	}
 
 	public static void writeOutputFile(OutputData data, String filename) throws IOException {
-		createFile(filename);
+		String fileURL = "outputs/" + filename;
 
-		writeToFile(filename, data.getOutput());
+		createFile(fileURL);
+
+		writeToFile(fileURL, data.getOutput());
 	}
 
 	private static void createFile(String filename) throws IOException {
